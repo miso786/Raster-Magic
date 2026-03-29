@@ -1,0 +1,15 @@
+﻿Observation 2
+
+The asset loading works like this:
+- need to load a sprite
+- opens DATA\sprites.zip
+- extracts it to a buffer
+- catches the sprite
+- release the buffer
+- close the zip
+
+When new sprite is needed, it starts again.
+Now opening the zip and closing seems like an overkill,
+but in reality its not happening that way. 
+The OS caches the zip and the next load won't use IO, and happens at memcopy speed. (png decoding is the narrowest cross-section, still fast)
+Loading assets with the above method remains lightning fast, and no need to make a "single pass" loader in most cases.

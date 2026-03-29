@@ -1,0 +1,191 @@
+﻿============
+Raster Magic
+============
+Fast, lightweight 2d Game framework for Purebasic created by miso. 2026.03.26
+
+=================
+Coding directive:
+=================
+  ======================
+- Directories and files:
+  ======================
+  Sub directories            : all uppercase  [DATA] [SOURCES]
+  filenames                  : all lowercase [sprites.zip] [audio.zip]
+  config files and readmes   : in game root dir
+  project file               : in game root dir
+  main file and project file : in game root dir
+  include files              : all in subfolder [SOURCES]
+  asset files                : all in subfolder [DATA]
+  
+  =================================
+- Includes (strong modularisation):
+  =================================
+  st_ prefix: the module is standalone, it does not call anything outside it's scope.
+              Can be included to projects individually, and these are included before anything else.
+              Module declaration is in the include. Universal toolboxes, like module math::
+              
+  rm_ prefix: the module is a Raster Magic (developed together with the game Void Squadfron) framework include.
+              It depends on the standalones and from the other rm_modules.
+              Framework specific code. Standalone as a whole together with all the st_ and rm_ includes.
+              To ensure crossreferences, the module declarations goes into a headers file that is included before any of the rm_ modules.
+              The framework itself will be very lightweight, primary purpose is to open a screen, handle events, loading assets.
+              No actual game code can go here.
+  gm_ prefix: game specific code, can use everything from above, and not really reusable.
+
+  The main.pb will have only 1 main include, all the other ones are done by the framework and the game in order. No need for xinclude.
+  
+  
+  =====
+- Code:
+  =====
+  Enableexplicit
+  All #CONSTANTS are Uppercase.
+  All variables.i are lowercase.
+  All modulenames are lowercase.
+
+
+=====================
+Game design decisions
+=====================
+a, The game will be frame based.
+   Delta time is todays standard and it is used everywhere, so why then?
+   The game is tested on an old hardware to ensure it runs on a steady 60 FPS.
+   It is capped there, and that way it should behave the same way everywhere (on todays hardware).
+   
+b, most modifiers will be phase-based, that way animations can be synced.
+
+c, The program will be optimized to 16:9 aspect ratio, as the most common gaming equipment today.
+
+d, Virtual resolution is used 1366x768, on different desktop parameters that will be up or downscaled.
+   Todo: letterboxing later for non 16:9 aspect ratios.
+   
+e, try to avoid multiple indentations
+
+
+===================
+Developement Policy
+===================
+MFSI - Minimal Footprint & Strict Isolation Policy
+For User-Friendly, Portable and Secure Applications
+Directive created by miso 2026.03.22 Ver 1.0.0
+
+1. Purpose and Core Principles
+This policy defines the development guidelines that ensure the software is:
+   - user-friendly,
+   - highly portable,
+   - transparent in operation,
+   - minimally intrusive to the system,
+   - fully self‑contained within its own directory,
+   - fully standalone, requiring no external components,
+   - capable of operating entirely offline,
+   - optimized for reliability and predictable behavior even on low-end or legacy hardware.
+
+The goal is to create an application that “just works,” requires no installation, leaves no trace on the system, and operates entirely within its own folder.
+
+
+2. Installation and Execution
+   - The software requires no installation; it runs by extracting or copying the files.
+   - The program does not write to the registry and does not modify system settings.
+   - Administrator privileges are not required.
+   - Fully portable, runnable from any location (USB drive, network share, arbitrary folder).
+   - DRM‑free, with no activation, licensing checks, or online verification.
+    The version number and build date must always be visible:
+   -     either in the window title bar, or
+   -     via a --version command‑line switch.
+
+3. Filesystem Usage
+   - The program may only read and write within its own directory and subdirectories.
+   - It must not create files/folders elsewhere on the system.
+   - All configuration, log, and cache files must reside within the application folder.
+   - Uninstallation is achieved by deleting the folder, leaving no residual files.
+
+4. Dependencies and Compatibility
+   - No external DLL/SO/Dylib files.
+   - No .NET, Java, or other runtime environments. No Electron/Webview.
+   - No external redistributable packages (e.g., Visual C++ Runtime).
+   - The software is fully standalone; all required components are included.
+   - Must operate 100% offline, with no network dependency even at first run.
+   - Behavior must be deterministic, independent of system state or environment variables.
+   - Build process must be reproducible with a versioned toolchain.
+
+5. Performance and Hardware Requirements
+    The software must be tested and verified to run smoothly on low‑end hardware, including:
+   -     CPUs from circa 2005,
+   -     4–8 GB RAM systems.
+    Critically important code paths must be single‑thread optimized to ensure:
+   -     predictable performance,
+   -     compatibility with older CPUs,
+   -     minimal overhead.
+   - Multi‑threading may be used only where it provides clear, measurable benefit without harming stability.
+
+6. Configuration Management
+   - Configuration files must use human‑readable formats (e.g., JSON, YAML, XML, CFG, TXT, etc).
+   - Configurations must be editable, documented, and transparent.
+   - Hidden or binary configuration formats should be avoided unless necessary.
+
+7. Data Handling and Privacy
+   - No telemetry by default.
+   - No automatic data transmission to external servers.
+     Any network communication must be (if there's any):
+   -     user-initiated,
+   -     documented,
+   -     optional.
+   - Log files must not contain personal or sensitive information.
+   - The software must remain fully functional without internet access.
+
+8. Logging and Error Handling
+   - Logging (if there's any) must be disableable and size‑limited.
+   - Logs stored only within the application directory.
+    Error messages must be:
+   -     clear and understandable,
+   -     helpful and actionable,
+   -     free of sensitive information.
+
+9. User Experience
+   - No advertisements or third-party content.
+   - No unnecessary permission requests.
+   - Settings must be easy to find and understand.
+    Updates (if there's any):
+   -     must not be automatic,
+   -     must not modify the system,
+   -     must occur only at the user’s discretion.
+   - Full functionality must remain available offline.
+
+10. Security Principles
+   - The program must not download or execute external code.
+   - No self-updating mechanism that overwrites binaries.
+   - File operations must occur only in user‑specified locations.
+   - The software must not attempt to bypass system security restrictions.
+   - No DRM, license enforcement, or online activation.
+
+11. Documentation and Transparency
+   - Documentation must clearly describe:
+   -     operation,
+   -     file structure,
+   -     configuration formats,
+   -     any optional network communication.
+   - It must be transparent that the program does not modify the system.
+
+12. Testability and Quality Assurance
+   - Automated tests must validate:
+   -     file handling,
+   -     configuration management,
+   -     error handling,
+   -     portability,
+   -     offline operation,
+   -     performance on low-end hardware.
+    Build and release processes must be documented and version-controlled.
+
+13. “What We Guarantee” – User Assurances
+The software guarantees that it:
+   - does not modify the system,
+   - does not write to the registry,
+   - does not require installation,
+   - does not use external dependencies,
+   - is DRM-free,
+   - is fully standalone,
+   - works entirely offline,
+   - runs well even on older hardware,
+   - does not collect data without consent,
+   - is fully portable,
+   - can be removed without leaving traces.

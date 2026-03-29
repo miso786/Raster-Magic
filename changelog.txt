@@ -1,0 +1,57 @@
+﻿39 54 100 153 164 [187] 191
+130
+=========
+CHANGELOG
+=========
+20260322 1040 - Basic framework setup
+              - Added principles.txt
+              - Added this changelog.txt
+              - rm versioned 1.00, not finished yet.
+20260323 0337 - Added and versioned all basic includes
+              - Added st_structures
+              - Added rm_headers
+              - Added rm_desktop
+              - Added rm_window
+              - Added rm_screen
+              - Added rm_Events
+              - Added rm_input
+              - Added st_pet
+              - Added rm_res
+              (The program now compilable, can load sounds and sprites, open screen, handles events, tested with different dpi)
+              (optimized to 16:9 aspect ratio, at the moment it stretches if the monitors aspect differs)
+20260323 0838              
+              - Some sort keychecks for input:
+              - Added function input::escape()
+              - Added function input::spacekey() - key had to be added, as space() is reserved
+              - Added function input::leftkey()
+              - Added function input::rightkey()
+              - Added function input::upkey()
+              - Added function input::downkey()  - these are for the basic cursor checks
+              - Added st_math with the most basic interpolations always needed
+              
+20260323 0956 - Added st_screenshot              
+
+20260324 0726 - Added decision: try to avoid multiple indentations
+              - Made st_screenshot module ver:1.00 -> 777 and shared it to public
+              
+20262324 0922 - already had to bugfix st_screenshot to ver 1.02, as the keyboard handling was wrong. Fixed.
+              - Also updated the public version on pb forums.
+              - Renamed structures:: to def::, renamed include st_structures.pbi to st_def.pbi
+                st_structures module with modulename structures:: was too long for me. As it only holds
+                structures and constants for types, I renamed the file to st_def.pbi, the module itself to def::
+                As it holds definitions for common things, that will fit best I think.
+                It looks clear in short form too.
+              - Added a common resource structure to defs. I was puzzled what to do. 
+                Should I make a different structure for audio and another for images and sprites?
+                I decided to use a common structure, as the main task is to get the ID-s. Types are defined by def::.
+                
+              - Testing the first sprited actors. translate, scalex,y, rotate and changealpha. Not modularized yet.
+              - st_def versioned 102 with the additions of the new typedefs
+              - st_math has been expanded with distance and angle calculations
+20260325 0009 - Updated st_screenshot to v1.03
+              - some not yet modularized prototype tests has been made to create sprite actors with parent - child topology
+                Root mode actors coordinates and angle are relative to world origo
+                Child mode actors coordinates and angle relative to parent actor
+                I was thinking what to use here, matrices or standard trig. At the moment it is standard trig.
+                idea: if i create a camera actor that is relative to world origo, but every sprite actor will be inverse modified to relative camera center,
+                then i have a rotateable camera. Not implemented / tested yet. Should be the same (just inverted) as the parent - child system already working.
