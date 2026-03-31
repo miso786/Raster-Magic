@@ -3,6 +3,8 @@ Raster Magic Framework ( Work In Progress )
 A featherweight 2D framework built for PureBasic 6.40, designed to provide a clean, minimal
 and efficient foundation for small games, prototypes, and experimental tools.
 
+About Purebasic: https://www.purebasic.com/
+
 Overview
 
 Raster Magic focuses on simplicity and clarity. It offers a compact set of core systems for rendering
