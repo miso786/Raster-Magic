@@ -1,7 +1,4 @@
 ﻿
-
-
-
 Module events
   #VERSION = 100
   ;===================================
@@ -25,7 +22,11 @@ Module events
       
     EndIf
   EndProcedure
-   
+  
+  
+  ;==========================================
+  ;Empty yet
+  ;==========================================
   Procedure init()
   EndProcedure
   
@@ -46,13 +47,11 @@ Module events
       isQuitWindow(w_event)
       isActiveWindow(w_event)
     Until Not w_event
-
   EndProcedure
    
 EndModule
 
-; IDE Options = PureBasic 6.40 beta 2 (Windows - x64)
-; CursorPosition = 2
+; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
 ; Folding = -
 ; EnableXP
 ; DPIAware

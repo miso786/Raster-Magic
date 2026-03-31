@@ -10,6 +10,9 @@ Module res
   
   Global Path$ = ".\Data\"
   
+  ;==========================================
+  ;Initializes the res module
+  ;==========================================
   Procedure init()
     UseZipPacker()
     UsePNGImageDecoder()
@@ -21,6 +24,9 @@ Module res
     InitSound()
   EndProcedure
   
+  ;========================================================
+  ;Loads an asset by its extension, uses the resource type!
+  ;========================================================
   Procedure.i Load(assetname.s , *asset.def::resource)
     Protected extension.s
     Protected length.i = Len(assetname)
@@ -44,6 +50,10 @@ Module res
     EndWith
   EndProcedure
   
+  
+  ;==============================================
+  ;Draws a sprite asset of resource sprite at x,y
+  ;==============================================
   Procedure Draw(*asset.def::resource, x.f, y.f)
     With *asset
       If \Type = def::#SPRITE
@@ -58,7 +68,10 @@ Module res
   
   
   
-  
+  ;==========================================
+  ;Loads a sound from a specific zip
+  ;Returns it's ID
+  ;==========================================
   Procedure.i SoundLoad(name.s)
     Protected Archive, Size, *Buffer, ID,result.i
     Protected ArchiveName.s = Path$ + "sounds.zip"
@@ -88,7 +101,10 @@ Module res
   
   
   
-  
+  ;==========================================
+  ;Loads a sprite from a specific zip
+  ;Returns it's ID
+  ;==========================================
   Procedure.i SpriteLoad(name.s)
     #SpriteFlags = #PB_Sprite_AlphaBlending
     Protected Archive, Size, *Buffer, ID,result.i
@@ -119,9 +135,8 @@ Module res
   
 EndModule
 
-; IDE Options = PureBasic 6.40 beta 2 (Windows - x64)
-; CursorPosition = 50
-; FirstLine = 13
+; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
+; CursorPosition = 6
 ; Folding = --
 ; EnableXP
 ; DPIAware

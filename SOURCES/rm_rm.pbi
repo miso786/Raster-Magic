@@ -5,6 +5,7 @@
   #TITLE          = "Raster Magic Test"
   Declare Init()
   Declare Update()
+  Declare drawversion()
 EndDeclareModule
 
 IncludeFile "rm_headers.pbi"
@@ -12,7 +13,7 @@ IncludeFile "rm_headers.pbi"
 ;101 - 20260329  - To free rm::events from some graphics And input calls, i modified rm::update To handle the multiwork
 
 Module rm
-  #VERSION        = 101
+  #VERSION        = 102
   ;==========================================
   ;Initializes Raster Magic 2d Game Framework
   ;==========================================
@@ -28,26 +29,38 @@ Module rm
     window::show()
   EndProcedure
   
+  ;==========================================
+  ;Initializes Raster Magic 2d Game Framework
+  ;==========================================
   Procedure update()
-    input::update()
-    
-    events::update()
-    
-    mouse::draw()
-    screenshot::Update()
     FlipBuffers()
-    
-    
-    DesktopMouseX()         ; linux fix
     ClearScreen(RGB(0,0,0)) ; linux fix
-    
-    
+    input::update()
+    events::update()
+    screenshot::Update()
+    mouse::draw()
+    DesktopMouseX()         ; linux fix
   EndProcedure
+  
+  ;==========================================
+  ;Returns version as string
+  ;==========================================
+  Procedure.s getversion_s()
+    ProcedureReturn Str(#VERSION)
+  EndProcedure
+  
+  ;==========================================
+  ;Displays the frameworks version text
+  ;==========================================
+  Procedure drawversion()
+    pet::text(0,ScreenHeight()-30,"Raster Magic framework v"+getversion_s())
+  EndProcedure
+  
+  
 EndModule
 
 
-; IDE Options = PureBasic 6.40 beta 2 (Windows - x64)
-; CursorPosition = 20
-; Folding = -
+; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
+; Folding = --
 ; EnableXP
 ; DPIAware

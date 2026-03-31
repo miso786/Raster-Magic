@@ -39,7 +39,7 @@ Repeat
   
   ;spritedraws
   DisplayTransparentSprite(logo,  (sw - lw),  (sh - lh + dist))
-  mouse::draw()
+  rm::drawversion()
   
   ;controls
   If input::escape() : End : EndIf
@@ -48,5 +48,6 @@ Repeat
 ForEver
 
 ; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
+; CursorPosition = 38
 ; EnableXP
 ; DPIAware
