@@ -8,7 +8,7 @@ Module res
   Global soundcount
   Global spritecount
   
-  Global Path$ = ".\Data\"
+  Global Path$ = "."+#PS$+"Data"+#PS$
   
   ;==========================================
   ;Initializes the res module
@@ -136,7 +136,7 @@ Module res
 EndModule
 
 ; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
-; CursorPosition = 6
+; CursorPosition = 10
 ; Folding = --
 ; EnableXP
 ; DPIAware

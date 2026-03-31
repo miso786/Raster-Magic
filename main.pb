@@ -3,8 +3,8 @@
 ;==================================
 ;INITIALIZATION
 ;==================================
-IncludeFile "SOURCES\rm_rm.pbi"
-IncludeFile "SOURCES\gm_gm.pbi"
+IncludeFile "SOURCES"+#PS$+"rm_rm.pbi"
+IncludeFile "SOURCES"+#PS$+"gm_gm.pbi"
 gm::Init()
 
 
@@ -19,5 +19,6 @@ Repeat
 ForEver
 
 ; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
+; CursorPosition = 8
 ; EnableXP
 ; DPIAware
