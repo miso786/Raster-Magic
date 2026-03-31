@@ -35,7 +35,7 @@ Raster Magic is built around a few core principles:
 License: CC BY-NC-ND 4.0  
 https://creativecommons.org/licenses/by-nc-nd/4.0/
 
-This codebae is free to use and share for non-commercial/learning purposes.
+This codebase is free to use and share for non-commercial/learning purposes.
 You may use it for your non commercial work freely (with credit).
 You may not sell, bundle, modify for distribution, or use commercially without permission.
 Donations are not possible/planned.
