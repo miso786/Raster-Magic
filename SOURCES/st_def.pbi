@@ -1,4 +1,8 @@
 ﻿DeclareModule def
+  
+  ;================
+  ;-desktop stucture
+  ;================
   Structure desktop
     id.i
     width.i
@@ -7,7 +11,9 @@
     unscaledheight.i
   EndStructure
   
-  ;RESOURCE TYPES, fix values, no changing enumerations allowed here.
+  ;==================================================================
+  ;-RESOURCE TYPES, fix values, no changing enumerations allowed here.
+  ;==================================================================
   #DATA   = 1
   #IMAGE  = 2
   #SPRITE = 3
@@ -21,6 +27,9 @@
     cy.i
   EndStructure
   
+  ;===============================================================
+  ;-2d positions, scale, rotation, pivot data, tested in prototypes
+  ;===============================================================
   Structure gizmo
     x.f
     y.f
@@ -33,6 +42,9 @@
     pa.f
   EndStructure
   
+  ;=======================================
+  ;-sprite actor type, tested in prototypes
+  ;=======================================
   Structure spriteactor
     *spr.resource
     gizmo.gizmo
@@ -48,9 +60,9 @@ Module def
   #VERSION = 102
 EndModule
 
-; IDE Options = PureBasic 6.40 beta 2 (Windows - x64)
-; CursorPosition = 32
-; FirstLine = 7
+; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
+; CursorPosition = 61
+; FirstLine = 3
 ; Folding = -
 ; EnableXP
 ; DPIAware
