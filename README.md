@@ -1,6 +1,6 @@
 Raster Magic Framework ( Work In Progress )
 
-A featherweight 2D engine built for PureBasic 6.40, designed to provide a clean, minimal
+A featherweight 2D framework built for PureBasic 6.40, designed to provide a clean, minimal
 and efficient foundation for small games, prototypes, and experimental tools.
 
 Overview
