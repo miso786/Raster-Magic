@@ -19,9 +19,9 @@ Module phases
   ;Update
   ;================================
   Procedure update()
-    fast + fast_increment
-    normal + normal_increment
-    slow + slow_increment
+    fast   +   fast_increment
+    normal +   normal_increment
+    slow   +   slow_increment
   EndProcedure
   
   ;================================
@@ -35,6 +35,7 @@ Module phases
 EndModule
 
 ; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
+; CursorPosition = 32
 ; Folding = -
 ; EnableXP
 ; DPIAware

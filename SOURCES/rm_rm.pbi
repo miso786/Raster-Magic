@@ -11,9 +11,10 @@ EndDeclareModule
 IncludeFile "rm_headers.pbi"
 
 ;101 - 20260329  - To free rm::events from some graphics And input calls, i modified rm::update To handle the multiwork
+;103 - 20260331  - Added phases module
 
 Module rm
-  #VERSION        = 102
+  #VERSION        = 103
   ;==========================================
   ;Initializes Raster Magic 2d Game Framework
   ;==========================================
@@ -63,7 +64,7 @@ EndModule
 
 
 ; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
-; CursorPosition = 28
+; CursorPosition = 13
 ; FirstLine = 3
 ; Folding = --
 ; EnableXP

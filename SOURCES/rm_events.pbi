@@ -19,8 +19,7 @@ Module events
       Repeat :  w_event  =  WaitWindowEvent(1)  :  isQuitWindow(w_event)
       Until     w_event  =  #PB_Event_ActivateWindow
       ReleaseMouse(#False)
-      
-    EndIf
+     EndIf
   EndProcedure
   
   
@@ -51,7 +50,7 @@ Module events
 EndModule
 
 ; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
-; CursorPosition = 38
+; CursorPosition = 21
 ; Folding = -
 ; EnableXP
 ; DPIAware

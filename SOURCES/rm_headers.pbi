@@ -66,6 +66,7 @@ DeclareModule mouse
   Declare registersprite(id)
 EndDeclareModule
 
+;-PHASES
 DeclareModule phases
   EnableExplicit
   Declare init()
@@ -100,8 +101,8 @@ IncludeFile "rm_phases.pbi"
 
 
 ; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
-; CursorPosition = 88
-; FirstLine = 33
+; CursorPosition = 68
+; FirstLine = 30
 ; Folding = --
 ; EnableXP
 ; DPIAware
