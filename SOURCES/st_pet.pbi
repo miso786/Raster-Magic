@@ -1,4 +1,27 @@
-﻿;-=======EXAMPLE START==========================================================================
+﻿;====================================================================================================
+;777 License – Do What You Please
+;
+;Copyright (c) [2026] [miso]
+;
+;This software code is released under the “777” terms:
+;
+; -    Do what you please.
+; -    You may Read, modify, copy, distribute, delete, sell, bundle, Or use it in any way you like.
+; -    No credit Or attribution is required.
+; -    No warranties of any kind. Use at your own risk.
+; -    The author is Not liable For any damage, loss, Or consequences resulting from its use.
+;
+;If you make something cool With it, great. If you Break something, that’s on you.
+;
+;That's all.
+;====================================================================================================
+
+
+;====================================================================================================
+;
+; Simple Graphic Texts using Sprites without external data
+;
+;====================================================================================================
 DeclareModule pet
 #VERSION = 100
 EnableExplicit
@@ -19,6 +42,9 @@ Module pet
   #USED_CHARACTERS="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[{]};:',<.>/?"+Chr(34)
   Global Dim font(370):Global Dim fontimport.i(370)
   
+  ;*****************************************************************
+  ;Initializes the pet font module
+  ;*****************************************************************
   Procedure init()
     Protected x.i,i.i,j.i,sprline.a
     For i = 1 To Len(#USED_CHARACTERS):fontImport(Asc(Mid(#USED_CHARACTERS,i,1)))=1 : Next i 
@@ -40,7 +66,10 @@ Module pet
         EndIf
       Next x
   EndProcedure
-   
+  
+  ;*****************************************************************
+  ;draws some text to screen
+  ;*****************************************************************
   Procedure text(x,y,text.s,color.i=$FFFFFF,intensity.i=255) : Protected.i textlength,i,character
     textlength.i = Len(text.s)
     For i = 1 To textlength.i
@@ -52,6 +81,9 @@ Module pet
     Next i
   EndProcedure
   
+  ;*****************************************************************
+  ;Draws centered text to screen
+  ;*****************************************************************
   Procedure centertext(x,y,text.s,color.i,intensity=255)
     Protected textlength.i
     textlength.i = Len(text.s)
@@ -59,13 +91,19 @@ Module pet
     text(x,y,text.s,color,intensity)
   EndProcedure
   
- 
+  ;*****************************************************************
+  ;Frees the resources that had been reserved when initialized
+  ;*****************************************************************
   Procedure releasefont()
     Protected i.i
     For i = 1 To Len(#USED_CHARACTERS)
       If IsSprite(font(i)) : FreeSprite(font(i)) : EndIf
     Next i
   EndProcedure
+  
+ ;*****************************************************************
+ ;Font data
+ ;***************************************************************** 
  DataSection
     sysfont:
     Data.q $3838383838380000,$EEEE000000003800,$00000000000000EE,$FFEEFFEEEEEE0000,$383800000000EEEE,$0000387EE07C0EFC,$1C3870EECECE0000,$7C7C00000000E6EE,$0000FCEEEE3C7CEE
@@ -86,8 +124,8 @@ Module pet
   EndDataSection
 EndModule 
 
-; IDE Options = PureBasic 6.40 beta 2 (Windows - x64)
-; CursorPosition = 17
+; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
+; CursorPosition = 104
 ; Folding = --
 ; EnableXP
 ; DPIAware
