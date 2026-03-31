@@ -23,6 +23,7 @@ Getting Started
 
 Clone the repository and build the project using PureBasic 6.40 or newer.
 The codebase is intentionally small and self‑contained, making it easy to explore and modify.
+
 Philosophy
 
 Raster Magic is built around a few core principles:
