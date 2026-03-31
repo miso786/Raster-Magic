@@ -57,3 +57,6 @@ CHANGELOG
                 then i have a rotateable camera. Not implemented / tested yet. Should be the same (just inverted) as the parent - child system already working.
 
 20260329 1728 - Added rm_mouse.pbi with the mouse handle commands.
+20260331 0951 - Set up public git
+              - Removed pb project file from git, as it contains user data and full paths. That way its unusable for sharing
+              - added a main.pb that contains some basic usage of the framework
