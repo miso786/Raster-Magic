@@ -33,14 +33,25 @@ Raster Magic is built around a few core principles:
     Keep it flexible – easy to adapt for your own projects
     Keep it practical – focused on real use, not theoretical complexity
 
-License: CC BY-NC-ND 4.0  
-https://creativecommons.org/licenses/by-nc-nd/4.0/
+License: CC BY‑NC 4.0
 
-This codebase is free to use and share for non-commercial/learning purposes.
-You may use it for your non commercial work freely (with credit).
-You may not sell, bundle, modify for distribution, or use commercially without permission.
-Donations are not possible/planned.
+https://creativecommons.org/licenses/by-nc/4.0/ (creativecommons.org in Bing)
 
-Full license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+This codebase is free to use, study, modify, and share for non‑commercial or learning purposes.
+You may freely use it in your own non‑commercial projects, provided that proper attribution is given.
 
-Exceptions: Some modules are free to use in any way you want, and that is always specified in the header of that module.
+Commercial use, selling, bundling, or including this project in paid products is not permitted without explicit permission.
+Donations are not possible or planned.
+
+Full license text:
+https://creativecommons.org/licenses/by-nc/4.0/legalcode (creativecommons.org in Bing)
+
+Some modules may grant broader rights and can be used in any way you want.
+Such exceptions are always clearly stated in the header of the specific module.
+
+Contributor Commercial Exception
+
+Contributors whose pull requests are accepted into the main branch are granted an additional permission:
+They receive a personal, non‑exclusive, perpetual right to use the framework (including modified versions) in commercial projects without further restrictions.
+This exception applies only to contributors whose work has been merged, and only after the merge has occurred.
+It does not extend to other users, organizations, or entities.
