@@ -11,6 +11,7 @@ Coding directive:
   ======================
   Sub directories            : all uppercase  [DATA] [SOURCES]
   filenames                  : all lowercase [sprites.zip] [audio.zip]
+  path separator             : always use #PS$ to ensure linux compatibility
   config files and readmes   : in game root dir
   project file               : in game root dir
   main file and project file : in game root dir
