@@ -55,3 +55,5 @@ CHANGELOG
                 I was thinking what to use here, matrices or standard trig. At the moment it is standard trig.
                 idea: if i create a camera actor that is relative to world origo, but every sprite actor will be inverse modified to relative camera center,
                 then i have a rotateable camera. Not implemented / tested yet. Should be the same (just inverted) as the parent - child system already working.
+
+20260329 1728 - Added rm_mouse.pbi with the mouse handle commands.

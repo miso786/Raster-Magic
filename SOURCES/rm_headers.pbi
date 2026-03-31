@@ -5,6 +5,8 @@ IncludeFile "st_def.pbi"
 IncludeFile "st_pet.pbi"
 IncludeFile "st_math.pbi"
 IncludeFile "st_screenshot.pbi"
+IncludeFile "st_line.pbi"
+
 
 ;============================
 ;-HEADER DECLARATIONS GO HERE
@@ -55,6 +57,14 @@ DeclareModule res
   Declare.i SpriteLoad(name.s)
 EndDeclareModule
 
+;-MOUSE
+DeclareModule mouse
+  Declare init()
+  Declare update()
+  Declare release()
+  Declare draw()
+  Declare registersprite(id)
+EndDeclareModule
 
 ;========================
 ;-INCLUDE MODULES GO HERE
@@ -66,6 +76,8 @@ IncludeFile "rm_screen.pbi"
 IncludeFile "rm_events.pbi"
 IncludeFile "rm_input.pbi"
 IncludeFile "rm_res.pbi"
+IncludeFile "rm_mouse.pbi"
+
 
 
 
@@ -79,8 +91,8 @@ IncludeFile "rm_res.pbi"
 
 
 ; IDE Options = PureBasic 6.40 beta 2 (Windows - x64)
-; CursorPosition = 52
-; FirstLine = 29
+; CursorPosition = 67
+; FirstLine = 33
 ; Folding = --
 ; EnableXP
 ; DPIAware

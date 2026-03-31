@@ -53,6 +53,7 @@ Module screenshot
   ;*****************************************************************
   Procedure create(screenshotFileName.s)
     Protected id
+    ;FIXME - Does not work with stretched screen...
     id   =   GrabSprite(#PB_Any,  0,  0,  ScreenWidth(),  ScreenHeight())
     If Not id  :  ProcedureReturn #False  :  EndIf                          ;Early out, [change 103]
     SaveSprite(id,   screenshotFileName,  #PB_ImagePlugin_JPEG)
@@ -111,8 +112,8 @@ Module screenshot
 EndModule
 
 ; IDE Options = PureBasic 6.40 beta 2 (Windows - x64)
-; CursorPosition = 32
-; FirstLine = 2
+; CursorPosition = 112
+; FirstLine = 54
 ; Folding = --
 ; EnableXP
 ; DPIAware

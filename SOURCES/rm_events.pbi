@@ -1,4 +1,7 @@
 ﻿
+
+
+
 Module events
   #VERSION = 100
   ;===================================
@@ -43,14 +46,13 @@ Module events
       isQuitWindow(w_event)
       isActiveWindow(w_event)
     Until Not w_event
-    input::update()
-    ClearScreen(RGB(255,0,0)) ; wont work on linux without this.
+
   EndProcedure
    
 EndModule
 
 ; IDE Options = PureBasic 6.40 beta 2 (Windows - x64)
-; CursorPosition = 28
+; CursorPosition = 2
 ; Folding = -
 ; EnableXP
 ; DPIAware

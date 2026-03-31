@@ -1,9 +1,9 @@
 ﻿
 Module Input
-  #VERSION = 102
+  #VERSION = 103
   Procedure init()
     InitKeyboard()
-    InitMouse()
+    mouse::init()
     InitJoystick()
   EndProcedure
   
@@ -59,7 +59,6 @@ Module Input
 EndModule
 
 ; IDE Options = PureBasic 6.40 beta 2 (Windows - x64)
-; CursorPosition = 18
 ; Folding = --
 ; EnableXP
 ; DPIAware
