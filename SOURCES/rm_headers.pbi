@@ -66,6 +66,15 @@ DeclareModule mouse
   Declare registersprite(id)
 EndDeclareModule
 
+DeclareModule phases
+  EnableExplicit
+  Declare init()
+  Declare update()
+  Declare.f n_sin(offset.a = 0)
+EndDeclareModule
+
+
+
 ;========================
 ;-INCLUDE MODULES GO HERE
 ;========================
@@ -77,6 +86,7 @@ IncludeFile "rm_events.pbi"
 IncludeFile "rm_input.pbi"
 IncludeFile "rm_res.pbi"
 IncludeFile "rm_mouse.pbi"
+IncludeFile "rm_phases.pbi"
 
 
 
@@ -89,9 +99,8 @@ IncludeFile "rm_mouse.pbi"
 
 
 
-
-; IDE Options = PureBasic 6.40 beta 2 (Windows - x64)
-; CursorPosition = 67
+; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
+; CursorPosition = 88
 ; FirstLine = 33
 ; Folding = --
 ; EnableXP

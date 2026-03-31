@@ -36,7 +36,6 @@ Module events
   ;closes  app  if  closewindow  event
   ;enables alt+tab, gives back the mouse and
   ;the program goes sleep until reactivation.
-  ;Calls the controls::update()
   ;==========================================
   Procedure Update()
     Protected w_event.i
@@ -52,6 +51,7 @@ Module events
 EndModule
 
 ; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
+; CursorPosition = 38
 ; Folding = -
 ; EnableXP
 ; DPIAware

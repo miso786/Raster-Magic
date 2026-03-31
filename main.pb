@@ -29,13 +29,14 @@ PlaySound(snd_intro)
 ;MAIN LOOP
 ;=================================
 
-Define counter.a = 0, dist.f = 0
+Define dist.f = 0
 
 Repeat 
+  ;-EVENTS, CONTROLS, FLIPBUFFERS
   rm::update()
   
   ;-CODE START HERE
-  a+3 : dist.f = math::sin256(a)*10
+  dist.f = phases::n_sin() * 10
   
   ;spritedraws
   DisplayTransparentSprite(logo,  (sw - lw),  (sh - lh + dist))
@@ -48,6 +49,6 @@ Repeat
 ForEver
 
 ; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
-; CursorPosition = 38
+; CursorPosition = 34
 ; EnableXP
 ; DPIAware

@@ -26,6 +26,7 @@ Module rm
     screen::init()
     pet::init()
     line::init()
+    phases::init()
     window::show()
   EndProcedure
   
@@ -38,6 +39,7 @@ Module rm
     input::update()
     events::update()
     screenshot::Update()
+    phases::update()
     mouse::draw()
     DesktopMouseX()         ; linux fix
   EndProcedure
@@ -61,6 +63,8 @@ EndModule
 
 
 ; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
+; CursorPosition = 28
+; FirstLine = 3
 ; Folding = --
 ; EnableXP
 ; DPIAware
