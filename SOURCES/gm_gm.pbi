@@ -41,7 +41,9 @@ IncludeFile "gm_snd.pbi"
 ;-gm module
 ; it's now has the main loop tasks, but thats not the final purpose of this module.
 ; Different scenes will have their own gm_scene.pbi, in the end gm_gm only handles the switching between them
+; For now this module is more like a scene.
 Module gm
+  #VERSION = 100
   ;==================
   ;template procedure
   ;==================
@@ -88,8 +90,8 @@ EndModule
 
 
 ; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
-; CursorPosition = 78
-; FirstLine = 25
+; CursorPosition = 45
+; FirstLine = 1
 ; Folding = --
 ; EnableXP
 ; DPIAware

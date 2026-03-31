@@ -1,5 +1,4 @@
-﻿39 54 100 153 164 [187] 191
-130
+﻿130
 =========
 CHANGELOG
 =========
@@ -61,4 +60,5 @@ CHANGELOG
 20260331 0951 - Set up public git
               - Removed pb project file from git, as it contains user data and full paths. That way its unusable for sharing
               - added a main.pb that contains some basic usage of the framework
-20260331 1714 - Added phases module for animations, to free the main loop with the main increment types.          
+20260331 1714 - Added phases module for animations, to free the main loop with the main increment types.      
+              - Added template game specific files gm, spr, snd    

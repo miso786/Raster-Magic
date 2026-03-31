@@ -12,9 +12,10 @@ IncludeFile "rm_headers.pbi"
 
 ;101 - 20260329  - To free rm::events from some graphics And input calls, i modified rm::update To handle the multiwork
 ;103 - 20260331  - Added phases module
+;104 - 20260331  - Fixed mouse draw order to be the last element
 
 Module rm
-  #VERSION        = 103
+  #VERSION        = 104
   ;==========================================
   ;Initializes Raster Magic 2d Game Framework
   ;==========================================
@@ -35,13 +36,13 @@ Module rm
   ;Initializes Raster Magic 2d Game Framework
   ;==========================================
   Procedure update()
+    mouse::draw()
     FlipBuffers()
     ClearScreen(RGB(0,0,0)) ; linux fix
     input::update()
     events::update()
     screenshot::Update()
     phases::update()
-    mouse::draw()
     DesktopMouseX()         ; linux fix
   EndProcedure
   
@@ -64,8 +65,8 @@ EndModule
 
 
 ; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
-; CursorPosition = 13
-; FirstLine = 3
+; CursorPosition = 14
+; FirstLine = 5
 ; Folding = --
 ; EnableXP
 ; DPIAware
