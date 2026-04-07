@@ -55,3 +55,7 @@ Contributors whose pull requests are accepted into the main branch are granted a
 They receive a personal, non‑exclusive, perpetual right to use the framework (including modified versions) in commercial projects without further restrictions.
 This exception applies only to contributors whose work has been merged, and only after the merge has occurred.
 It does not extend to other users, organizations, or entities.
+
+Thank you for the Contributors:
+
+Moulder - for helping with linux issues
