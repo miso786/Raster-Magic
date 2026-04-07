@@ -4,11 +4,12 @@
 ;=========================
 Module res
   EnableExplicit
-  #VERSION = 101
+  #VERSION = 102
+  ;102- path fix for linux, as it is case sensitive, and was faulty in the code. ( Was not following the rules. )
   Global soundcount
   Global spritecount
   
-  Global Path$ = "."+#PS$+"Data"+#PS$
+  Global Path$ = GetCurrentDirectory()+"DATA"+#PS$
   
   ;==========================================
   ;Initializes the res module
@@ -135,8 +136,8 @@ Module res
   
 EndModule
 
-; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
-; CursorPosition = 10
+; IDE Options = PureBasic 6.40 beta 7 (Windows - x64)
+; CursorPosition = 7
 ; Folding = --
 ; EnableXP
 ; DPIAware
