@@ -36,12 +36,12 @@ Module rm
   ;Initializes Raster Magic 2d Game Framework
   ;==========================================
   Procedure update()
+    screenshot::Update()
     mouse::draw()
     FlipBuffers()
-    ClearScreen(RGB(0,0,0)) ; linux fix
+    ClearScreen(RGB(200,200,200)) ; linux fix
     input::update()
     events::update()
-    screenshot::Update()
     phases::update()
     DesktopMouseX()         ; linux fix
   EndProcedure
@@ -64,9 +64,9 @@ Module rm
 EndModule
 
 
-; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
-; CursorPosition = 14
-; FirstLine = 5
+; IDE Options = PureBasic 6.40 beta 7 (Windows - x64)
+; CursorPosition = 38
+; FirstLine = 6
 ; Folding = --
 ; EnableXP
 ; DPIAware

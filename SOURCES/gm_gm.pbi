@@ -47,9 +47,14 @@ Module gm
   ;==================
   ;template procedure
   ;==================
-  Global lw.i,sw.i,dist.f,sh,lh
+  Global lw.i,sw.i,dist.f,sh,lh, myfont, myfont2, myfont3
   Procedure init()
     rm::Init()
+    ;Loding Raster fonts
+    myfont = fnt::load("standard.fnt")
+    myfont2 = fnt::load("topaz.fnt")
+    myfont3 = fnt::load("standard3.fnt")
+    fnt::setcurrent(myfont)
     ;preloading sprites
     spr::mouse = res::SpriteLoad("cursor.png")
     ZoomSprite(spr::mouse,SpriteWidth(spr::mouse)/4,SpriteHeight(spr::mouse)/4)
@@ -67,7 +72,7 @@ Module gm
     ;==================================
     ;PLAYING AN INTRO SOUND
     ;==================================
-    PlaySound(snd::intro)
+    ;PlaySound(snd::intro)
   EndProcedure
   
   ;==================
@@ -80,6 +85,15 @@ Module gm
     ;spritedraws
     DisplayTransparentSprite(spr::logo,  (sw - lw),  (sh - lh + dist))
     rm::drawversion()
+    
+    ;Display Raster font texts    
+    fnt::setcurrent(myfont)
+    fnt::draw(10,10,"Hello World")
+    fnt::setcurrent(myfont2)
+    fnt::draw(10,100,"This is the Raster Magic font test ver 000")
+    fnt::setcurrent(myfont3)
+    fnt::draw(10,200,"This is the Raster Magic font test ver 001")
+
     ;controls
     If input::escape() : End : EndIf
     ;-CODE END HERE
@@ -89,9 +103,9 @@ EndModule
 
 
 
-; IDE Options = PureBasic 6.40 beta 6 (Windows - x64)
-; CursorPosition = 45
-; FirstLine = 1
+; IDE Options = PureBasic 6.40 beta 7 (Windows - x64)
+; CursorPosition = 97
+; FirstLine = 44
 ; Folding = --
 ; EnableXP
 ; DPIAware
