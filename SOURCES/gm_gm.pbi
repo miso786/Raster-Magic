@@ -72,7 +72,7 @@ Module gm
     ;==================================
     ;PLAYING AN INTRO SOUND
     ;==================================
-    ;PlaySound(snd::intro)
+    PlaySound(snd::intro)
   EndProcedure
   
   ;==================
@@ -104,8 +104,8 @@ EndModule
 
 
 ; IDE Options = PureBasic 6.40 beta 7 (Windows - x64)
-; CursorPosition = 97
-; FirstLine = 44
+; CursorPosition = 74
+; FirstLine = 27
 ; Folding = --
 ; EnableXP
 ; DPIAware
