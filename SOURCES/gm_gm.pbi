@@ -51,10 +51,10 @@ Module gm
   Procedure init()
     rm::Init()
     ;Loding Raster fonts
-    myfont = fnt::load("standard.fnt")
-    myfont2 = fnt::load("topaz.fnt")
-    myfont3 = fnt::load("standard3.fnt")
-    fnt::setcurrent(myfont)
+    myfont    =   fnt::load("standard.fnt")
+    myfont2   =   fnt::load("topaz.fnt")
+    myfont3   =   fnt::load("standard3.fnt")
+    
     ;preloading sprites
     spr::mouse = res::SpriteLoad("cursor.png")
     ZoomSprite(spr::mouse,SpriteWidth(spr::mouse)/4,SpriteHeight(spr::mouse)/4)
@@ -104,8 +104,7 @@ EndModule
 
 
 ; IDE Options = PureBasic 6.40 beta 7 (Windows - x64)
-; CursorPosition = 74
-; FirstLine = 27
+; FirstLine = 42
 ; Folding = --
 ; EnableXP
 ; DPIAware

@@ -13,3 +13,7 @@ Now opening the zip and closing seems like an overkill,
 but in reality its not happening that way. 
 The OS caches the zip and the next load won't use IO, and happens at memcopy speed. (png decoding is the narrowest cross-section, still fast)
 Loading assets with the above method remains lightning fast, and no need to make a "single pass" loader in most cases.
+
+Observations 3
+
+There is no newarray creation in Pb. I had to use allocatememory to keep fast lookup using an index. I'm sure it has it's reasons, but still interesting, as maps and lists are all created with new keyword.
