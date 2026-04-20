@@ -7,6 +7,7 @@ IncludeFile "st_math.pbi"
 IncludeFile "st_screenshot.pbi"
 IncludeFile "st_line.pbi"
 IncludeFile "st_font.pbi"
+IncludeFile "st_flags.pbi"
 
 
 ;============================
@@ -102,7 +103,7 @@ IncludeFile "rm_phases.pbi"
 
 
 ; IDE Options = PureBasic 6.40 beta 7 (Windows - x64)
-; CursorPosition = 8
+; CursorPosition = 9
 ; Folding = --
 ; EnableXP
 ; DPIAware
