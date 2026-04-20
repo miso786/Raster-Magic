@@ -1,46 +1,59 @@
-﻿;This Module is For storing true/false type data in binary
-;It's purpose is small size, fast save possibility
+﻿;This Module is For storing true/false type data in binary.
+;It's purpose is to be small in size, have fast save possibility.
 ;can be used for gamestates, pathfinding nodes (open/closed)
-;It is possible to store a larga set of data with this like:
+;It is possible to store a large set of data with this like:
 ;Is #npc_A_alive, #has_pc_visited_place_A, has_item_key_A. seen_this_thing_A_before
 ;Saving would be fast with bitflags, can be compressed too.
 ;Note: Later it would be good to create a byte/other, longer formats
 
 ;Changelog:
 ;Ver: 100 - Created by miso 20260420 1904
+;Ver: 100 - small typo fixes in comments by miso 20260420 1904
+;Ver: 101 - added full release (no single flags list delete yet) by miso 20260420 1930
 
+;====================
+;-PUBLIC DECLARATIONS
+;====================
 DeclareModule flags
   Declare init()
   Declare.i create(bitsize.i)
-  Declare set(index, blockid = 0)
-  Declare clear(index, blockid = 0)
-  Declare flip(index, blockid = 0)
-  Declare get(index,blockid = 0)
+  Declare set(index   ,   blockid  =  0)
+  Declare clear(index ,   blockid  =  0)
+  Declare flip(index  ,   blockid  =  0)
+  Declare get(index   ,   blockid  =  0)
   Declare release()
 EndDeclareModule
 
+;==================
+;-FLAGS MODULE
+;==================
 Module flags
-  #VERSION        = 100
+  #VERSION        = 101
   #BITSPERBYTE    = 8
   #BITMINIMUM     = 1
   #COUNTMINIMUM   = 1
+  
+  ;==================
   Structure flagstype
     *address
     bitsize.i
     size.i
   EndStructure
   
-  Global count = 0
-  
+  ;==================
   Global current.flagstype
+  Global count     = 0
   current\address  = 0
   current\bitsize  = 0
-  current\size = 0
+  current\size     = 0
   
   ;mbk should be used as name for all memory block type later on
+  ;==================
   Global Dim mbk.flagstype(count)
   
+  ;==========================================
   ;auto initialized, its just for consistency
+  ;==========================================
   Procedure init()
   EndProcedure
   
@@ -48,17 +61,17 @@ Module flags
   ;Creates a set of bitflags, returns ID
   ;=====================================
   Procedure.i create(bitsize.i)
-    If bitsize<#BITMINIMUM : ProcedureReturn #False : EndIf
-    Protected bytecount.i,remainder.i
-    bytecount = bitsize/#BITSPERBYTE
-    remainder = bitsize%#BITSPERBYTE
-    If remainder<> 0 : bytecount + 1 : EndIf
+    If bitsize<#BITMINIMUM   :   ProcedureReturn #False   :   EndIf
+    Protected bytecount.i, remainder.i
+    bytecount   =   bitsize / #BITSPERBYTE
+    remainder   =   bitsize % #BITSPERBYTE
+    If remainder<> 0 :   bytecount + 1   : EndIf
     count + 1
     ReDim mbk(count)
-    mbk(count)\address = AllocateMemory(bytecount)
-    If Not mbk(count)\address : ProcedureReturn #False : EndIf
-    mbk(count)\size = bytecount
-    mbk(count)\bitsize = bitsize
+    mbk(count)\address   =   AllocateMemory(bytecount)
+    If Not mbk(count)\address   :   ProcedureReturn #False   :   EndIf
+    mbk(count)\size      =   bytecount
+    mbk(count)\bitsize   =   bitsize
     ProcedureReturn count
   EndProcedure
   
@@ -142,20 +155,20 @@ Module flags
     Protected block.i
     Protected *address,bitsize
     Protected byteindex.i,bitindex.i,byteread.a, mask.a
-    If blockid = 0 
-      *address = current\address
-      bitsize = current\bitsize
+    If blockid   =   0 
+      *address   =   current\address
+      bitsize    =   current\bitsize
     Else
-      *address = mbk(blockid)\address
-      bitsize = mbk(blockid)\bitsize
+      *address   =   mbk(blockid)\address
+      bitsize    =   mbk(blockid)\bitsize
     EndIf
     ;note, this might cause problems, if #false is not expected at reading
-    If index<0 Or index>bitsize : ProcedureReturn #False : EndIf
-    byteindex = index/#BITSPERBYTE
-    bitindex  = index%#BITSPERBYTE
-    readbyte  = PeekA(*address + byteindex)
-    mask      = 1<<bitindex
-    ProcedureReturn Bool(readbyte&mask<>0)
+    If index<0   Or   index>bitsize   :   ProcedureReturn #False   :   EndIf
+    byteindex    =   index / #BITSPERBYTE
+    bitindex     =   index % #BITSPERBYTE
+    readbyte     =   PeekA(*address + byteindex)
+    mask         =   1  <<  bitindex
+    ProcedureReturn Bool(readbyte & mask <> 0)
   EndProcedure
   
   ;=====================================
@@ -182,12 +195,24 @@ Module flags
     bitindex  = index % #BITSPERBYTE
 
     byteread  = PeekA(*address + byteindex)
-    mask      = 1 << bitindex
+    mask      = 1  <<  bitindex
 
     PokeA(*address + byteindex, byteread ! mask)
-EndProcedure
+  EndProcedure
   
+  ;===========================
+  ;releases ALL allocated data
+  ;===========================
   Procedure release()
+    Protected i
+    If count<1 : ProcedureReturn #False : EndIf
+    For i = count To 1 Step -1
+      If mbk(i)\address
+        FreeMemory(mbk(i)\address)
+      EndIf
+    Next i
+    count = 0
+    ReDim mbk(0)
   EndProcedure
 EndModule
 
@@ -202,7 +227,6 @@ EndModule
 
 
 ; IDE Options = PureBasic 6.40 beta 7 (Windows - x64)
-; CursorPosition = 9
 ; Folding = --
 ; EnableXP
 ; DPIAware
