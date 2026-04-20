@@ -64,3 +64,4 @@ CHANGELOG
               - Added template game specific files gm, spr, snd    
 20260417 0227 - Added new graphic font module, a new font file format.
 20260420 1905 - Added st_flags.pbi, a true/false status observer module
+              - Added release() for flags
