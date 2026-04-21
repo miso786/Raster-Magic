@@ -10,6 +10,15 @@
 ;Ver: 100 - Created by miso 20260420 1904
 ;Ver: 100 - small typo fixes in comments by miso 20260420 1904
 ;Ver: 101 - added full release (no single flags list delete yet) by miso 20260420 1930
+;Ver: 102 - choose() was broken, fixed.
+;         - bitsize check fixed
+;         - fixed get()
+;         - added safety check for address if its null
+;         - added safety check for blockid to not be greater than count
+;         - safety protocol : redim and count-1 if memory allocation fails with create
+;         - Added choose to public declarations
+;         - clearing current\ after full release
+
 
 ;====================
 ;-PUBLIC DECLARATIONS
@@ -22,13 +31,14 @@ DeclareModule flags
   Declare flip(index  ,   blockid  =  0)
   Declare get(index   ,   blockid  =  0)
   Declare release()
+  Declare choose(id)
 EndDeclareModule
 
 ;==================
 ;-FLAGS MODULE
 ;==================
 Module flags
-  #VERSION        = 101
+  #VERSION        = 102
   #BITSPERBYTE    = 8
   #BITMINIMUM     = 1
   #COUNTMINIMUM   = 1
@@ -69,7 +79,7 @@ Module flags
     count + 1
     ReDim mbk(count)
     mbk(count)\address   =   AllocateMemory(bytecount)
-    If Not mbk(count)\address   :   ProcedureReturn #False   :   EndIf
+    If Not mbk(count)\address   :count - 1 : ReDim mbk(count) :   ProcedureReturn #False   :   EndIf
     mbk(count)\size      =   bytecount
     mbk(count)\bitsize   =   bitsize
     ProcedureReturn count
@@ -82,9 +92,9 @@ Module flags
     If id<#COUNTMINIMUM Or id>count
       ProcedureReturn #False
     EndIf
-    current\address = mbk(count)\address
-    current\bitsize = mbk(count)\bitsize
-    current\size    = mbk(count)\size
+    current\address = mbk(id)\address
+    current\bitsize = mbk(id)\bitsize
+    current\size    = mbk(id)\size
   EndProcedure
   
   Procedure delete()
@@ -99,14 +109,18 @@ Module flags
     Protected byteindex.i, bitindex.i, byteread.a, mask.a
 
     If blockid = 0
-        *address = current\address
-        bitsize  = current\bitsize
+      *address = current\address
+      bitsize  = current\bitsize
+    ElseIf blockid <= count
+      *address = mbk(blockid)\address
+      bitsize  = mbk(blockid)\bitsize
     Else
-        *address = mbk(blockid)\address
-        bitsize  = mbk(blockid)\bitsize
+      ProcedureReturn #False
     EndIf
-
-    If index < 0 Or index > bitsize
+    
+    If *address = 0 : ProcedureReturn #False : EndIf
+    
+    If index < 0 Or index >= bitsize
         ProcedureReturn
     EndIf
 
@@ -130,12 +144,14 @@ Module flags
     If blockid = 0
         *address = current\address
         bitsize  = current\bitsize
-    Else
+    ElseIf blockid <= count
         *address = mbk(blockid)\address
         bitsize  = mbk(blockid)\bitsize
+    Else
+        ProcedureReturn #False
     EndIf
 
-    If index < 0 Or index > bitsize
+    If index < 0 Or index >= bitsize
         ProcedureReturn
     EndIf
 
@@ -158,15 +174,18 @@ Module flags
     If blockid   =   0 
       *address   =   current\address
       bitsize    =   current\bitsize
-    Else
+    ElseIf blockid <= count
       *address   =   mbk(blockid)\address
       bitsize    =   mbk(blockid)\bitsize
+    Else
+      ProcedureReturn #False
     EndIf
+    If *address = 0 : ProcedureReturn #False : EndIf
     ;note, this might cause problems, if #false is not expected at reading
     If index<0   Or   index>bitsize   :   ProcedureReturn #False   :   EndIf
     byteindex    =   index / #BITSPERBYTE
     bitindex     =   index % #BITSPERBYTE
-    readbyte     =   PeekA(*address + byteindex)
+    byteread     =   PeekA(*address + byteindex)
     mask         =   1  <<  bitindex
     ProcedureReturn Bool(readbyte & mask <> 0)
   EndProcedure
@@ -182,12 +201,15 @@ Module flags
     If blockid = 0
         *address = current\address
         bitsize  = current\bitsize
-    Else
+    ElseIf blockid <= count
         *address = mbk(blockid)\address
         bitsize  = mbk(blockid)\bitsize
+    Else
+        ProcedureReturn #False
     EndIf
-
-    If index < 0 Or index > bitsize
+      
+    If *address = 0 : ProcedureReturn #False : EndIf
+    If index < 0 Or index >= bitsize
         ProcedureReturn
     EndIf
 
@@ -213,6 +235,9 @@ Module flags
     Next i
     count = 0
     ReDim mbk(0)
+    current\address = 0
+    current\bitsize = 0
+    current\size    = 0
   EndProcedure
 EndModule
 
@@ -227,6 +252,7 @@ EndModule
 
 
 ; IDE Options = PureBasic 6.40 beta 7 (Windows - x64)
+; CursorPosition = 19
 ; Folding = --
 ; EnableXP
 ; DPIAware
